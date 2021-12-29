@@ -3,12 +3,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Router from "next/router";
 import { withRouter, useRouter } from "next/router";
 import cardJson from '../JSON_Files/Card_Item_List.json'
-import styles from '../styles/Home.module.css'
+import styles from '../../styles/Home.module.css'
 
 function ItemListCard(props) {
     const router = useRouter()
-
-    const [list, setList] = useState(null)
     useEffect(() => {
         console.log("data render")
     }, [])
