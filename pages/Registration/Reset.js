@@ -3,6 +3,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 import { auth, sendPasswordResetEmail } from "./firebase";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import "../../styles/Reset.css";
 function Reset() {
   const [email, setEmail] = useState("");

@@ -13,7 +13,7 @@ export default function Nav(props) {
             <div className={style.navbar}>
                 <a onClick={()=>Router.push('/')}>Home</a>
                 <a href="#" className={style.right}>Blog</a>
-                <a href="#" className={style.right}>Register as a Professional</a>
+                <a onClick={()=>router.push('/Registration/Registration')} className={style.right}>Register as a Professional</a>
                 <a onClick={()=>router.push('/Registration/Login','/Login')} className={style.right}>Login / Sign Up</a>
             </div>
         </>
