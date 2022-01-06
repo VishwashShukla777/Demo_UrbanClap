@@ -44,8 +44,6 @@ const signInWithEmailAndPassword = async (email, password) => {
   try {
     debugger
     await auth.signInWithEmailAndPassword(email, password);
-    console.log("login")
-    router.push('/Dashboard/Dashboard')
   } catch (err) {
     console.error(err);
     alert(err.message);

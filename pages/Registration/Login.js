@@ -3,7 +3,7 @@ import { useHistory, unstable_HistoryRouter } from "react-router-dom";
  import { auth, signInWithEmailAndPassword, signInWithGoogle } from "../Registration/firebase";
  import { useAuthState } from "react-firebase-hooks/auth";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import router from "next/router";
+import router, { Router } from "next/router";
 
 
 const login = {
@@ -42,16 +42,17 @@ function Login() {
     debugger
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-   // const [user, loading] = useAuthState(auth);
-    // const history = unstable_HistoryRouter();
-    // useEffect(() => {
-    //     debugger
-    //     if (loading) {
-    //         // maybe trigger a loading screen
-    //         return;
-    //     }
-    //     if (user) history.replace("/dashboard");
-    // }, [user, loading]);
+//    const [user, loading] = useAuthState(auth);
+//     // const history = unstable_HistoryRouter();
+    
+//     useEffect(() => {
+//         debugger
+//         if (loading) {
+//             // maybe trigger a loading screen
+//             return;
+//         }
+//         if (user) router.push("/Dashboard/Dashboard");
+//     }, [user, loading]);
     return (
         <>
             <div style={login}>
