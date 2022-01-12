@@ -43,7 +43,17 @@ const signInWithGoogle = async () => {
 const signInWithEmailAndPassword = async (email, password) => {
   try {
     debugger
-    await auth.signInWithEmailAndPassword(email, password);
+    let data = await auth.signInWithEmailAndPassword(email, password);
+
+    console.log("user login ", data)
+    let { accessToken, isExpired } = data.user._delegate.stsTokenManager
+    if(isExpired === false){
+      localStorage.setItem("token", accessToken)
+      router.push('/Dashboard/Dashboard')
+    } 
+    else{
+      router.push('/Registration/Login')
+    }
   } catch (err) {
     console.error(err);
     alert(err.message);

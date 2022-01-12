@@ -18,6 +18,9 @@ import Nav from '../Navbar/Nav'
   input[type=text]:focus {{
     backgroundColor: 'lightblue'
   }}
+ul {{
+    listStyleType: 'none'
+}}
 
 </style>
 
@@ -73,7 +76,6 @@ const register__google = {
   borderRadius: '4px',
   fontStyle: 'normal',
   fontWeight: '700',
-  fontSize: '18px',
   lineHeight: '25px',
   textAlign: 'center',
   color: 'hsl(11deg 100% 50%)',
@@ -83,7 +85,13 @@ const register__google = {
 const ul_Row={
   display: 'flex',
   justifyContent: 'space-evenly',
-  marginTop: '50px'
+  marginTop: '50px',
+  listStyleType: 'none'
+}
+
+const boxStyle={
+  textAlign: 'center',
+  boxShadow: '0px 0px 5px 2px grey'
 }
 // const register div ={
 //   marginTop: '7px'
@@ -174,7 +182,7 @@ function Register() {
         </div>
         </div>
 <br />
-            <div style={register_}>
+            {/* <div style={register_}>
               <div style={register__container}>
                 <input
                   type="text"
@@ -210,11 +218,11 @@ function Register() {
                   Already have an account? <a href={() => router.push('/Registration/Login')} >Login</a> now.
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
           <div>
             <div className="row">
-              <div className="col-sm-12">
+              <div className="col-sm-12" style={{textAlign: 'center'}}>
 <h2>Join UrbanCompany to change your life</h2>
 <p>Urban Company is an app-based marketplace that empowers professionals like you to become your own boss</p>
 <ul style={ul_Row}>
@@ -232,12 +240,23 @@ function Register() {
   </li>
 </ul>
               </div>
-            </div>
+            </div><br />
             <div className="row">
-              <div className="col-sm-12">
-                
+              <div className="col-sm-10 offset-1 " style={boxStyle}>
+              <h2>Wondering who can join?</h2>
+<p>If you have 1 year of related experience in any of these fields, you can join Urban Company.</p>
+<ul style={ul_Row}>
+  <li>
+    <h3>30,000+</h3>
+    <p>Partners already on board</p>
+  </li>
+  <li>
+  <h3>30,000+</h3>
+    <p>Partners already on board</p>
+  </li>
+</ul>
               </div>
-            </div>
+            </div><br />
           </div>
 
         </> :
