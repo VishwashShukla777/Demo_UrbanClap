@@ -6,7 +6,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 //import "../../styles/Dashboard.css";
 import { auth, db, logout } from '../Registration/firebase';
 import { isEmpty } from 'lodash'
+import Footer from "../Footer/Footer";
 import router from "next/router";
+export const StoreContext = React.createContext(null)
 
 const dashboard = {
   height: '100vh',
@@ -30,6 +32,25 @@ const dashboard__btn = {
   color: 'white',
   backgroundColor: 'black'
 }
+
+// function onAuthStateChange(callback) {
+//   return firebase.auth().onAuthStateChanged(user => {
+//     if (user) {
+//       console.log("The user is logged in");
+
+//       setTokenExpire(user._delegate.stsTokenManager.isExpired)
+//       setUid(user._delegate.uid)
+//       setUserEmail(user._delegate.email)
+//       setToken(user._delegate.stsTokenManager.accessToken)
+//       fetchUserName(user._delegate.uid)
+
+//       callback({ loggedIn: true, email: user.email });
+//     } else {
+//       callback({ loggedIn: false });
+//     }
+//   });
+// }
+
 function Dashboard() {
   console.log("test ,")
   // const [user, loading, error] = useAuthState(auth);
@@ -40,6 +61,7 @@ function Dashboard() {
   const [userEmail, setUserEmail] = useState('')
   const [token, setToken] = useState('')
   const [tokenExpire, setTokenExpire] = useState(true)
+  const [userData, setUserData]=useState({});
   //const history = useHistory();
   const fetchUserName = async (uid) => {
     debugger
@@ -50,6 +72,7 @@ function Dashboard() {
         .get();
       const data = await query.docs[0].data();
       setName(data.name);
+      setUserData({Name:data.name,Email:data.email},()=>{console.log(userData)})
     } catch (err) {
       console.error(err);
       alert("An error occured while fetching user data");
@@ -89,16 +112,24 @@ function Dashboard() {
   }, [])
 
   return (
+    <>
+    <StoreContext.Provider value={userData}>
     <div style={dashboard}>
-      <div style={dashboard__container}>
-        Logged in as
-        <div>{name}</div>
-        <div>{!isEmpty(userEmail) && userEmail || "login first"}</div>
-        <button style={dashboard__btn} onClick={logout}>
-          Logout
-        </button>
+        <div style={dashboard__container}>
+          Logged in as
+          <div>{name}</div>
+          <div>{!isEmpty(userEmail) && userEmail || "login first"}</div>
+          <button style={dashboard__btn} onClick={logout}>
+            Logout
+          </button>
+        </div>
       </div>
-    </div>
+      <br />
+      <Footer />
+    </StoreContext.Provider>
+     
+    </>
+
   );
 }
 export default Dashboard;

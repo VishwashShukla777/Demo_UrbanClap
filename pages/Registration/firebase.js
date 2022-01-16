@@ -47,11 +47,11 @@ const signInWithEmailAndPassword = async (email, password) => {
 
     console.log("user login ", data)
     let { accessToken, isExpired } = data.user._delegate.stsTokenManager
-    if(isExpired === false){
+    if (isExpired === false) {
       localStorage.setItem("token", accessToken)
       router.push('/Dashboard/Dashboard')
-    } 
-    else{
+    }
+    else {
       router.push('/Registration/Login')
     }
   } catch (err) {
@@ -87,7 +87,8 @@ const sendPasswordResetEmail = async (email) => {
   }
 };
 const logout = () => {
-  auth.signOut();
+  const logout = auth.signOut();
+  logout.then(() => { router.push('/Registration/Login') });//.catch(()=>{})
 };
 export {
   auth,
